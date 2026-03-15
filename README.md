@@ -93,7 +93,7 @@ Copy environment variables as needed (e.g. from `.env.example` if present) into 
 - **Vercel / Netlify:** Connect the GitHub repo and use `npm run build` with output directory `dist`.  
 - **Custom domain:** Configure in your hosting provider (e.g. Netlify, Vercel).
 
-Live demo: [[kisaanmitraa.vercel.app](https://kisaanmitraa.vercel.app)](https://kisaanmitra-tech.vercel.app/)
+Live demo: [https://kisaanmitra-tech.vercel.app/](https://kisaanmitra-tech.vercel.app/)
 
 ---
 
