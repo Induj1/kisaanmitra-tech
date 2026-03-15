@@ -3,7 +3,7 @@ import React from 'react';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { LucideIcon, AlertTriangle, CheckCircle, Info, XCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motionSafe as motion } from '@/lib/motion';
 
 type AlertType = 'success' | 'warning' | 'error' | 'info';
 
