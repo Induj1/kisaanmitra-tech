@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PageLayout from "@/components/PageLayout";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatKisaanHelpline, kisaanHelplineTelHref } from "@/constants/contact";
 import { 
   Calendar, 
   Users, 
@@ -29,7 +30,7 @@ import {
 // Add import of required icons as per lucide-react-icons constraint
 import {
   Users as UsersIcon, TrendingUp as TrendingUpIcon, Languages, Headphones, // For stats highlights
-  Calendar as CalendarIcon, BookOpen as BookOpenIcon, Search as SearchIcon, Image as ImageIcon, Home as HomeIcon, Settings as SettingsIcon, Info as InfoIcon, ArrowRight as ArrowRightIcon, Star as StarIcon, CheckCircle as CheckCircleIcon, Shield as ShieldIcon, CreditCard as CreditCardIcon, Award as AwardIcon, MessageSquare as MessageSquareIcon, MapPin, Cloud, Calculator
+  Calendar as CalendarIcon, BookOpen as BookOpenIcon, Search as SearchIcon, Image as ImageIcon, Home as HomeIcon, Settings as SettingsIcon, Info as InfoIcon, ArrowRight as ArrowRightIcon, Star as StarIcon, CheckCircle as CheckCircleIcon, Shield as ShieldIcon, CreditCard as CreditCardIcon, Award as AwardIcon, MessageSquare as MessageSquareIcon,   MapPin, Cloud, Calculator, Phone
 } from "lucide-react";
 
 const heroImage = "https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?auto=format&fit=crop&w=1400&q=80";
@@ -612,6 +613,39 @@ const Index = () => {
           <Button asChild size="lg" className="bg-primary hover:bg-primary-dark">
             <Link to="/sign-up">Access Full Data</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Contact us */}
+      <section id="contact" className="py-16 bg-white dark:bg-gray-950 border-y border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Contact us</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Need help? Call the national Kisaan helpline — free from anywhere in India.
+            </p>
+          </div>
+          <motion.div
+            className="rounded-2xl border-2 border-primary/25 bg-gradient-to-br from-primary/10 via-white to-green-50 dark:from-primary/15 dark:via-gray-900 dark:to-gray-900 p-8 shadow-lg text-center"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35 }}
+          >
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-2">
+              Kisaan helpline number
+            </p>
+            <a
+              href={kisaanHelplineTelHref}
+              className="inline-flex items-center justify-center gap-3 text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors break-all sm:break-normal"
+            >
+              <Phone className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 text-primary" aria-hidden />
+              {formatKisaanHelpline()}
+            </a>
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 font-noto">
+              टोल फ्री हेल्पलाइन · Toll-free helpline
+            </p>
+          </motion.div>
         </div>
       </section>
       

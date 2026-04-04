@@ -1,6 +1,6 @@
-
 import React from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, Phone } from 'lucide-react';
+import { formatKisaanHelpline, kisaanHelplineTelHref } from '@/constants/contact';
 
 const Footer: React.FC = () => {
   return (
@@ -43,10 +43,26 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="col-span-1">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">Contact</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-4">
+              Contact us
+            </h4>
+            <div className="rounded-lg border border-primary/20 bg-primary/5 dark:bg-primary/10 p-4 mb-4">
+              <p className="text-xs font-semibold uppercase tracking-wide text-primary dark:text-primary/90 mb-1">
+                Kisaan helpline
+              </p>
+              <a
+                href={kisaanHelplineTelHref}
+                className="inline-flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
+              >
+                <Phone className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+                {formatKisaanHelpline()}
+              </a>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 font-noto">
+                टोल फ्री · Toll free
+              </p>
+            </div>
             <ul className="space-y-2">
               <li className="text-gray-600 dark:text-gray-400 text-sm">Email: info@kisaanmitra.org</li>
-              <li className="text-gray-600 dark:text-gray-400 text-sm">Phone: +91 98765 43210</li>
               <li className="text-gray-600 dark:text-gray-400 text-sm">Address: New Delhi, India</li>
             </ul>
             <div className="mt-4">
