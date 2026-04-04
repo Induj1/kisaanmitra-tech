@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { reverseGeocode } from "@/onboarding/geocode";
-import { getStepHints } from "@/onboarding/engine";
+import { createInitialState, getStepHints } from "@/onboarding/engine";
 import { saveOnboardingToFarmerProfile } from "@/onboarding/saveProfile";
 import type { OnboardingAction, OnboardingLang } from "@/onboarding/types";
 import {
@@ -55,15 +55,22 @@ export const OnboardingChat: React.FC<{ userId: string }> = ({ userId }) => {
 
   useEffect(() => {
     let cancelled = false;
+    const langBeforeLoad = useOnboardingStore.getState().lang;
+    useOnboardingStore.setState({ ...createInitialState(langBeforeLoad), bootstrapped: false });
+
     (async () => {
       const { data: row, error } = await supabase
         .from("farmer_profiles")
         .select("name,location,crop_type,primary_need")
         .eq("user_id", userId)
-        .single();
+        .maybeSingle();
 
-      if (error || !row) {
-        toast({ variant: "destructive", title: "Profile load failed", description: error?.message });
+      if (error) {
+        toast({ variant: "destructive", title: "Profile load failed", description: error.message });
+        if (!cancelled) {
+          const currentLang = useOnboardingStore.getState().lang;
+          bootstrap(userId, currentLang, {}, null);
+        }
         return;
       }
 
@@ -89,7 +96,7 @@ export const OnboardingChat: React.FC<{ userId: string }> = ({ userId }) => {
 
       if (cancelled) return;
       const currentLang = useOnboardingStore.getState().lang;
-      bootstrap(userId, currentLang, row, geo);
+      bootstrap(userId, currentLang, row ?? {}, geo);
     })();
     return () => {
       cancelled = true;
@@ -108,6 +115,7 @@ export const OnboardingChat: React.FC<{ userId: string }> = ({ userId }) => {
 
   const saveOnceRef = useRef(false);
   useEffect(() => {
+    if (!bootstrapped) return;
     if (step !== "complete" || !isOnboardingDataComplete(data) || saveOnceRef.current) return;
     saveOnceRef.current = true;
     let cancelled = false;
@@ -119,7 +127,6 @@ export const OnboardingChat: React.FC<{ userId: string }> = ({ userId }) => {
         .maybeSingle();
       if (existing?.primary_need?.trim()) {
         clearOnboardingDraft(userId);
-        navigate("/dashboard", { replace: true });
         return;
       }
 
@@ -143,7 +150,7 @@ export const OnboardingChat: React.FC<{ userId: string }> = ({ userId }) => {
     return () => {
       cancelled = true;
     };
-  }, [step, data, userId, navigate, toast]);
+  }, [bootstrapped, step, data, userId, navigate, toast]);
 
   const hints = getStepHints(step, lang);
 

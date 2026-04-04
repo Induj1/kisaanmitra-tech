@@ -144,7 +144,7 @@ const Dashboard = () => {
       description: 'Jarvis: plan, prices, and tools by voice or chat',
       route: '/assistant',
       color: 'bg-violet-500',
-      image: cardImage('photo-1478737270239-2f02b77fc618'),
+      image: cardImage('photo-1589903308904-1010c0684b8e'),
       imageAlt: 'Microphone for voice farming assistant',
     },
     {
@@ -153,7 +153,7 @@ const Dashboard = () => {
       description: translate('analyzeYourCrops'),
       route: '/crop-analysis',
       color: 'bg-lime-500',
-      image: cardImage('photo-1500651230702-0e2d8a49d4ad'),
+      image: cardImage('photo-1523348837708-15d4a09cfac2'),
       imageAlt: 'Rows of healthy crops in a field',
     },
     {
@@ -162,7 +162,7 @@ const Dashboard = () => {
       description: translate('getAIAdvice'),
       route: '/ask-expert',
       color: 'bg-teal-500',
-      image: cardImage('photo-1416879595882-3373a0480b5b'),
+      image: cardImage('photo-1500937386664-56b1bdf762ac'),
       imageAlt: 'Farmer reviewing crops for expert advice',
     },
     {
