@@ -156,7 +156,7 @@ const SignUp = () => {
           description: "आपका स्वागत है (Welcome to KisaanMitra)",
         });
 
-        navigate("/");
+        navigate("/onboarding");
       }
     } catch (error: any) {
       console.error("Registration error:", error);

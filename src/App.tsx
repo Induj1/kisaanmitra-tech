@@ -33,6 +33,7 @@ import MarketplaceDetail from "./pages/features/MarketplaceDetail";
 import WeatherDetail from "./pages/features/WeatherDetail";
 import AskExpertDetail from "./pages/features/AskExpertDetail";
 import GovernmentSchemesDetail from "./pages/features/GovernmentSchemesDetail";
+import Onboarding from "./pages/Onboarding";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,14 @@ const AppRoutes = () => {
       <Route path="/government" element={<Government />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route
+        path="/onboarding"
+        element={
+          <ProtectedRoute>
+            <Onboarding />
+          </ProtectedRoute>
+        }
+      />
       
       {/* Feature Detail Pages */}
       <Route path="/features/farm-planner" element={<FarmPlannerDetail />} />
