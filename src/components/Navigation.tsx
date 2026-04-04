@@ -171,6 +171,11 @@ const Navigation: React.FC = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
+                  <NavLink to="/onboarding" className="cursor-pointer">
+                    Quick setup (chat)
+                  </NavLink>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <NavLink to="/settings" className="cursor-pointer">
                     {translate('settings')}
                   </NavLink>

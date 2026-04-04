@@ -77,6 +77,7 @@ export type Database = {
           location: string
           name: string
           phone: string
+          primary_need: string | null
           profile_image: string | null
           user_id: string
         }
@@ -90,6 +91,7 @@ export type Database = {
           location: string
           name: string
           phone: string
+          primary_need?: string | null
           profile_image?: string | null
           user_id: string
         }
@@ -103,6 +105,7 @@ export type Database = {
           location?: string
           name?: string
           phone?: string
+          primary_need?: string | null
           profile_image?: string | null
           user_id?: string
         }
